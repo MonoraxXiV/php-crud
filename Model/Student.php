@@ -16,9 +16,8 @@ class Student
      * @param string $email
      * @param $created_at
      */
-    public function __construct(int $student_id, string $student_name, string $student_email, int $student_class)
+    public function __construct(string $student_name, string $student_email, int $student_class)
     {
-        $this->student_id = $student_id;
         $this->student_name = $student_name;
         $this->student_email = $student_email;
         $this->student_class = $student_class;
