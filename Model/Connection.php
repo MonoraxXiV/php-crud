@@ -51,4 +51,29 @@ class Connection
         $handle->execute();
     }
 
+    public function displayStudent()
+    {
+        $handle = $this->openConnection()->prepare("SELECT * FROM student");
+        $handle->execute();
+        $displayStudents = $handle->fetchAll();
+        return $displayStudents;
+    }
+
+    public function displayTeacher()
+    {
+        $handle = $this->openConnection()->prepare("SELECT * FROM teacher");
+        $handle->execute();
+        $displayTeachers = $handle->fetchAll();
+        return $displayTeachers;
+    }
+
+    public function displayClass()
+    {
+        $handle = $this->openConnection()->prepare("SELECT * FROM class");
+        $handle->execute();
+        $displayClasses = $handle->fetchAll();
+        return $displayClasses;
+    }
+
+
 }
