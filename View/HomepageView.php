@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>Home Page</h1>
-<form method='post'>
+<form method='get'>
         <button type='submit' name='class' class='btn btn-primary'>Class</button>
         <button type='submit' name='student' class='btn btn-primary'>Student</button>
         <button type='submit' name='teacher' class='btn btn-primary'>Teacher</button>
