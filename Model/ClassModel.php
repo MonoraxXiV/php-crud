@@ -13,9 +13,8 @@ class ClassModel
      * @param string $class_name
      * @param string $class_location
      */
-    public function __construct(int $class_id, string $class_name, string $class_location)
+    public function __construct(string $class_name, string $class_location)
     {
-        $this->class_id = $class_id;
         $this->class_name = $class_name;
         $this->class_location = $class_location;
     }
