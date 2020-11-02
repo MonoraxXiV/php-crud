@@ -31,6 +31,7 @@ class ClassController
             if ((!empty($ClassName) && (!empty($ClassLocation)))) {
                 $class = new ClassModel($ClassName, $ClassLocation);
                $connection->insertClass($class);
+                header("Location: http://crud.localhost/?class");
 
             }
         }
