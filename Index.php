@@ -15,7 +15,9 @@ require_once "Controller/TeacherController.php";
 
 $controller = new HomepageController();
 
-
+if (isset($_POST['class'])) {
+    $controller = new classController();
+}
 
 $controller->render();
 
