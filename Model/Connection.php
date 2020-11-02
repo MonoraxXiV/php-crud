@@ -41,4 +41,14 @@ class Connection
         $handle->bindValue(':teacher_class', $teacher->getTeacherClass());
         $handle->execute();
     }
+
+    public function insertClass(ClassModel $class)
+    {
+        $this->PDO;
+        $handle = $this->openConnection()->prepare("INSERT INTO class (class_name, class_location) VALUES (:class_name, :class_location)");
+        $handle->bindValue(':class_name', $class->getClassName());
+        $handle->bindValue(':class_location', $class->getClassLocation());
+        $handle->execute();
+    }
+
 }
