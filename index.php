@@ -25,6 +25,9 @@ if (isset($_POST['backToMain'])) {
     header("Location: http://crud.localhost/");
 }
 
+if (isset($_GET['student'])) {
+    $controller = new StudentController();
+}
 $controller->render();
 
 
