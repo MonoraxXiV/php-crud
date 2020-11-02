@@ -1,0 +1,22 @@
+<?php
+declare(strict_types=1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+require_once "Model/ClassModel.php";
+require_once "Model/Student.php";
+require_once "Model/Teacher.php";
+require_once "Controller/ClassController.php";
+require_once "Controller/HomepageController.php";
+require_once "Controller/StudentController.php";
+require_once "Controller/TeacherController.php";
+
+
+$controller = new HomepageController();
+
+
+
+$controller->render();
+
+
