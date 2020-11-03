@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 
 class StudentController
@@ -10,8 +10,8 @@ class StudentController
         $connection = new Connection();
         $showStudents = $connection->displayStudent();
         $classes = $connection->displayClass();
-        $form="";
-        if (isset($_POST['addNewStudent'])){
+        $form = "";
+        if (isset($_POST['addNewStudent'])) {
             require "View/RegistrationStudentView.php";
 
         }
@@ -30,7 +30,11 @@ class StudentController
         if (isset($_GET["student"])) {
             $studentId = $_GET["student"];
             $profileStudent = $connection->profileStudent($studentId);
+            $studentClassId = $profileStudent['student_class'];
+            $getClassName = $connection->getClassName($studentClassId);
             $view = "View/StudentProfileView.php";
+
+
         }
 
         require $view;
