@@ -29,14 +29,18 @@ if (isset($_GET['AllStudents'])) {
     $controller = new StudentController();
 }
 
-if (isset($_GET['student'])){
-    $controller = new StudentController();
-
-}
-
 if (isset($_GET['AllTeachers'])){
     $controller= new TeacherController();
 }
+if (isset($_GET['student'])){
+    $controller = new StudentController();
+}
+
+if (isset($_GET['teacher'])){
+    $controller = new TeacherController();
+}
+
+
 $controller->render();
 
 

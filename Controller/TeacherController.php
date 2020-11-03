@@ -5,6 +5,7 @@ class TeacherController
 {
     public function render()
     {
+        $view = 'View/TeacherView.php';
         $connection = new Connection();
         $showTeachers= $connection->displayTeacher();
         $classes = $connection->displayClass();
@@ -31,6 +32,12 @@ class TeacherController
             }
         }
 
-        require 'View/TeacherView.php';
+        if (isset($_GET["teacher"])) {
+            $teacherId = $_GET["teacher"];
+            $profileTeacher = $connection->profileTeacher($teacherId);
+            $view = "View/TeacherProfileView.php";
+        }
+
+        require $view;
     }
 }
