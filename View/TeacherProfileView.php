@@ -27,14 +27,14 @@
         </p>
     </div>
     <form method="post">
-        <button type="submit" name="editTeacherRow" class="btn btn-primary mb-2 ">Edit</button>
+        <button type="submit" name="editTeacherProfile" class="btn btn-primary mb-2 ">Edit</button>
         <button type="submit" name="deleteTeacherProfile" class="btn btn-primary mb-2 ">Delete</button>
         <br>
     <button type="submit" name="backToTeachers" class="btn btn-primary m-auto">Go Back To Teacher overview</button>
     </form>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+<?php echo $form ?>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"

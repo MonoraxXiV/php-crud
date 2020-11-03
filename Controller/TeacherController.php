@@ -5,6 +5,7 @@ class TeacherController
 {
     public function render()
     {
+        $form = "";
         $view = 'View/TeacherView.php';
         $connection = new Connection();
         $showTeachers = $connection->displayTeacher();
@@ -43,6 +44,28 @@ class TeacherController
                 $getTeacherName = "";
             }
         }
+        if (isset($_POST["editTeacherProfile"])) {
+            $form = "<form method='post'>
+<div class='form-row'>
+                <div class='form-group col-md-6'>
+                    <label for='TeacherName'>Teacher Name:</label>
+                    <input type='text' name='TeacherName' id='TeacherName' class='form-control' value=''>
+</div>
+            <div class='form - group col - md - 6'>
+    <label for='StudentEmail'>Teacher Email:</label>
+    <input type='text' name='TeacherEmail' id='TeacherEmail' class='form-control' value=''>
+</div>
+</div>
+<button type='submit' name='confirmEdit' class='btn btn-primary'>Confirm</button>
+</form>";
+        }
+        if (isset($_POST["confirmEdit"])) {
+            $teacherName = $_POST["TeacherName"];
+            $teacherEmail = $_POST["TeacherEmail"];
+            $updateStudent = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
+            header("Location: http://crud.localhost/?teacher=$teacherId");
+        }
+
 
         require $view;
     }

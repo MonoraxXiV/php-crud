@@ -25,7 +25,8 @@
         <?php
             $profileTeacher = $connection->profileTeacher($Teacher["teacher_id"]);
             $getClassName = $connection->getClassName($profileTeacher['teacher_class']);
-            $getClassName = $getClassName['class_name']; ?>
+            $getClassName = $getClassName['class_name'];
+        ?>
             <tr>
                 <td><?php echo $Teacher['teacher_id'] ?></td>
                 <td><?php echo $Teacher['teacher_name'] ?></td>
