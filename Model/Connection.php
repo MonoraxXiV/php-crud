@@ -75,6 +75,40 @@ class Connection
         return $displayClasses;
     }
 
+    public function profileStudent()
+    {
+        $studentId = $_GET['student'];
+        $handle = $this->openConnection()->prepare("SELECT * FROM student where id = :id");
+        $handle->bindParam(':id', $studentId);
+        $handle->execute();
+        $profileStudent = $handle->fetch();
+        return $profileStudent;
+    }
+
+    public function profileTeacher()
+    {
+        $teacherId = $_GET['teacher'];
+        $handle = $this->openConnection()->prepare("SELECT * FROM teacher where id = :id");
+        $handle->bindParam(':id', $teacherId);
+        $handle->execute();
+        $profileTeacher = $handle->fetch();
+        return $profileTeacher;
+    }
+
+    public function profileClass()
+    {
+        $classId = $_GET['class'];
+        $handle = $this->openConnection()->prepare("SELECT * FROM class where id = :id");
+        $handle->bindParam(':id', $classId);
+        $handle->execute();
+        $profileClass = $handle->fetch();
+        return $profileClass;
+    }
+
+
+
+
+
 
 
 }
