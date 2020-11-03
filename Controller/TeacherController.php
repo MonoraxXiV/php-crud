@@ -62,7 +62,7 @@ class TeacherController
         if (isset($_POST["confirmEdit"])) {
             $teacherName = $_POST["TeacherName"];
             $teacherEmail = $_POST["TeacherEmail"];
-            $updateStudent = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
+            $updateTeacher = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
             header("Location: http://crud.localhost/?teacher=$teacherId");
         }
 

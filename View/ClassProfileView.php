@@ -50,6 +50,7 @@
     <br>
 
     <?php echo $form; ?>
+    <?php echo $formEdit; ?>
     <form method="post">
         <button type="submit" name="editClassProfile" class="btn btn-primary mb-2 ">Edit</button>
         <button type="submit" name="deleteClassProfile" class="btn btn-primary mb-2 ">Delete</button>

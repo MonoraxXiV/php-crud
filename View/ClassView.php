@@ -25,20 +25,18 @@
                     <td><?php echo $class['class_name'] ?></td>
                     <td><?php echo $class['class_location']  ?></td>
                     <td><a href="?class=<?=$class["class_id"]?>"><button type="button" name="studentList" class="btn btn-primary"><?php echo $class['class_name']."'s students"?></button></td></a>
-                    <td><button type="submit" name="editClassRow" class="btn btn-primary">Edit</button></td>
+                    <td><button type="submit" value="<?php echo $class['class_id'] ?>" name="AllClasses" class="btn btn-primary">Edit</button></td>
                     <td> <button type="submit" name="deleteClassRow" class="btn btn-primary">Delete</button></td>
                 </tr>
             <?php endforeach ?>
             </tbody>
         </table>
-    </form> <br>
-    <form  method="post">
         <button type="submit" name="addNewClass" class="btn btn-primary">Add Class</button>
         <button type="submit" name="backToMain" class="btn btn-primary">Go Back To Main Page</button>
     </form>
     <?php echo $form; ?>
 </div>
-
+<?php echo $formEdit ?>
 <style>
     .container {
         width: 50%;
