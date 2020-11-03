@@ -9,7 +9,7 @@ class StudentController
         $connection = new Connection();
         $showStudents = $connection->displayStudent();
         $classes = $connection->displayClass();
-        $form = "";
+        $form="";
         if (isset($_POST['addNewStudent'])){
             require "View/RegistrationStudentView.php";
 
@@ -24,6 +24,14 @@ class StudentController
                 header("Location: http://crud.localhost/?student");
 
             }
+        }
+
+        if (isset($_GET["user"])) {
+            $studentId = $_GET["user"];
+            var_dump($studentId);
+            $profile = $connection->profileStudent($studentId);
+         var_dump($profile);
+
         }
 
         require "View/StudentView.php";

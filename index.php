@@ -28,6 +28,10 @@ if (isset($_POST['backToMain'])) {
 if (isset($_GET['student'])) {
     $controller = new StudentController();
 }
+if (isset($_GET['user'])){
+    $controller = new StudentController();
+
+}
 
 if (isset($_GET['teacher'])){
     $controller= new TeacherController();

@@ -27,7 +27,7 @@
                     <td><?php echo $student['student_email'] ?></td>
                     <td><?php echo $student['student_class']  ?></td>
                     <!--placeholder for profile link -->
-                    <td><a href="?user=<?= $student["student_id"]?>"><button type="button" class="btn btn-primary">Profile</button></td></a>
+                    <td><a href="?user=<?=$student["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
                     <td><button type="submit" name="editStudentRow" class="btn btn-primary">Edit</button></td>
                     <td> <button type="submit" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
                 </tr>
