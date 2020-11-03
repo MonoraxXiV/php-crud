@@ -139,10 +139,11 @@ class Connection
         return $handle->fetch();
     }
 
-
-
-
-
-
-
+    public function getTeacherName($teacherClassId)
+    {
+        $handle = $this->openConnection()->prepare('SELECT teacher_name FROM teacher WHERE teacher_class = :teacher_class');
+        $handle->bindParam('teacher_class', $teacherClassId);
+        $handle->execute();
+        return $handle->fetch();
+    }
 }
