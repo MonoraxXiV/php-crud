@@ -18,11 +18,15 @@
             <td>ID</td>
             <td>NAME</td>
             <td>LOCATION</td>
+            <td>ASSIGNED TEACHER</td>
+            <td>STUDENT LIST</td>
             <?php foreach ($classes as $class): ?>
                 <tr>
                     <td><?php echo $class['class_id'] ?></td>
                     <td><?php echo $class['class_name'] ?></td>
                     <td><?php echo $class['class_location']  ?></td>
+                    <td><!--<a href="?teacher=<?=$Teacher["teacher_id"]?>"><button type="button" name="assignedTeacher" class="btn btn-primary"><?php echo $Teacher["teacher_name"] ?></button>--></td><!--</a>-->
+                    <td><a href="?class=<?=$class["class_id"]?>"><button type="button" name="studentList" class="btn btn-primary"><?php echo $class['class_name']."'s students"?></button></td></a>
                     <td><button type="submit" name="editClassRow" class="btn btn-primary">Edit</button></td>
                     <td> <button type="submit" name="deleteClassRow" class="btn btn-primary">Delete</button></td>
                 </tr>

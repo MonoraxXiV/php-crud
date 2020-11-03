@@ -20,6 +20,7 @@
         <td>NAME</td>
         <td>EMAIL</td>
         <td>CLASS</td>
+        <td>STUDENTS</td>
         <td>PROFILE</td>
         <?php foreach ($showTeachers as $Teacher): ?>
             <tr>
@@ -27,6 +28,7 @@
                 <td><?php echo $Teacher['teacher_name'] ?></td>
                 <td><?php echo $Teacher['teacher_email']  ?></td>
                 <td><?php echo $Teacher['teacher_class']  ?></td>
+                <td><!--<a href="?class=<?=$class['class_id']?>"><button type="button" name="StudentList" class="btn btn-primary"><?php echo $Teacher['teacher_name']."s students"  ?>></button>--></td><!--</a> -->
                 <td><a href="?teacher=<?=$Teacher["teacher_id"]?>"><button type="button" name="TeacherId" class="btn btn-primary">Profile</button></td></a>
                 <td><button type="submit" name="editTeacherRow" class="btn btn-primary">Edit</button></td>
                 <td> <button type="submit" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
