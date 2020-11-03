@@ -23,6 +23,8 @@
                     <td><?php echo $class['class_id'] ?></td>
                     <td><?php echo $class['class_name'] ?></td>
                     <td><?php echo $class['class_location']  ?></td>
+                    <td><button type="submit" name="editClassRow" class="btn btn-primary">Edit</button></td>
+                    <td> <button type="submit" name="deleteClassRow" class="btn btn-primary">Delete</button></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

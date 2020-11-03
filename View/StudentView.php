@@ -19,13 +19,20 @@
             <td>NAME</td>
             <td>EMAIL</td>
             <td>CLASS</td>
+            <td>PROFILE</td>
             <?php foreach ($showStudents as $student): ?>
                 <tr>
                     <td><?php echo $student['student_id'] ?></td>
                     <td><?php echo $student['student_name'] ?></td>
                     <td><?php echo $student['student_email'] ?></td>
                     <td><?php echo $student['student_class']  ?></td>
+                    <!--placeholder for profile link -->
+                    <td><a href="?user=<?= $student["student_id"]?>"><button type="button" class="btn btn-primary">Profile</button></td></a>
+                    <td><button type="submit" name="editStudentRow" class="btn btn-primary">Edit</button></td>
+                    <td> <button type="submit" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
                 </tr>
+
+
             <?php endforeach; ?>
             </tbody>
         </table>
