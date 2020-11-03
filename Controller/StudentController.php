@@ -34,7 +34,7 @@ class StudentController
             if ($studentClassId !== null) {
                 $getClassName = $connection->getClassName($studentClassId);
                 $getTeacherName = $connection->getTeacherName($studentClassId);
-                $getClassName =  $getClassName['class_name'];
+                $getClassName = $getClassName['class_name'];
                 $getTeacherName = $getTeacherName['teacher_name'];
             } else {
                 $getClassName = "";
@@ -44,7 +44,27 @@ class StudentController
 
             $view = "View/StudentProfileView.php";
 
-
+            if (isset($_POST["editStudentProfile"])) {
+                $form = "<form method='post'>
+<div class='form-row'>
+                <div class='form-group col-md-6'>
+                    <label for='StudentName'>Student Name:</label>
+                    <input type='text' name='StudentName' id='StudentName' class='form-control' value=''>
+</div>
+            <div class='form - group col - md - 6'>
+    <label for='StudentEmail'>Student Email:</label>
+    <input type='text' name='StudentEmail' id='StudentEmail' class='form-control' value=''>
+</div>
+</div>
+<button type='submit' name='confirmEdit' class='btn btn-primary'>Confirm</button>
+</form>";
+            }
+            if (isset($_POST["confirmEdit"])) {
+                $studentName = $_POST["StudentName"];
+                $studentEmail = $_POST["StudentEmail"];
+                $updateStudent = $connection->updateStudent($studentName, $studentEmail, intval($studentId));
+                header("Location: http://crud.localhost/?student=$studentId");
+            }
         }
 
         require $view;

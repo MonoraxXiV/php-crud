@@ -9,7 +9,6 @@ class ClassController
         $form = "";
         $connection = new Connection();
         $classes = $connection->displayClass();
-
         if (isset($_POST['addNewClass'])){
             $form = "
 <form method='post'>
