@@ -6,6 +6,7 @@ class StudentController
 {
     public function render()
     {
+        $view = "View/StudentView.php";
         $connection = new Connection();
         $showStudents = $connection->displayStudent();
         $classes = $connection->displayClass();
@@ -26,14 +27,13 @@ class StudentController
             }
         }
 
-        if (isset($_GET["user"])) {
-            $studentId = $_GET["user"];
-            var_dump($studentId);
-            $profile = $connection->profileStudent($studentId);
-         var_dump($profile);
+        if (isset($_GET["student"])) {
+            $studentId = $_GET["student"];
+            $profileStudent = $connection->profileStudent($studentId);
+            $view = "View/StudentProfileView.php";
 
         }
 
-        require "View/StudentView.php";
+        require $view;
     }
 }

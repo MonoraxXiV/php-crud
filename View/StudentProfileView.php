@@ -12,7 +12,7 @@
 </head>
 <body>
 <body style="background-color: plum">
-<h2 class="text-center mb-3 bg-light ml-5 mr-5 mt-3 p-2"><?php echo $profileStudent['student name'] ?>'s Profile</h2>
+<h2 class="text-center mb-3 bg-light ml-5 mr-5 mt-3 p-2"><?php echo $profileStudent['student_name'] ?>'s Profile</h2>
 
 
 
