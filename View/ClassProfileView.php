@@ -19,9 +19,9 @@
         <h4 class="card-title"><?php echo "Class information" ?></h4>
         <p class="card-text">
 
-            id: <?php echo $profileClass['class_id'] .'<br>' ?>
-            class name: <?php echo $profileClass['class_name'] .'<br>'?>
-            Location: <?php echo $profileClass['class_location'] .'<br>' ?>
+            id: <?php echo $connection->profileClass($classId)['class_id'] .'<br>' ?>
+            class name: <?php echo $connection->profileClass($classId)['class_name'] .'<br>'?>
+            Location: <?php echo $connection->profileClass($classId)['class_location'] .'<br>' ?>
         </p>
     </div>
     <form method="get">
@@ -51,6 +51,8 @@
 
     <?php echo $form; ?>
     <?php echo $formEdit; ?>
+    <?php echo $formEditOverview; ?>
+
     <form method="post">
         <button type="submit" name="editClassProfile" class="btn btn-primary mb-2 ">Edit</button>
         <button type="submit" name="deleteClassProfile" class="btn btn-primary mb-2 ">Delete</button>
