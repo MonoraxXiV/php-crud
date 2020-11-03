@@ -22,11 +22,15 @@
         <td>CLASS</td>
         <td>PROFILE</td>
         <?php foreach ($showTeachers as $Teacher): ?>
+        <?php
+            $profileTeacher = $connection->profileTeacher($Teacher["teacher_id"]);
+            $getClassName = $connection->getClassName($profileTeacher['teacher_class']);
+            $getClassName = $getClassName['class_name']; ?>
             <tr>
                 <td><?php echo $Teacher['teacher_id'] ?></td>
                 <td><?php echo $Teacher['teacher_name'] ?></td>
                 <td><?php echo $Teacher['teacher_email']  ?></td>
-                <td><?php  echo $getClassName   ?></td>
+                <td><?php echo $getClassName ?></td>
                 <td><a href="?teacher=<?=$Teacher["teacher_id"]?>"><button type="button" name="TeacherId" class="btn btn-primary">Profile</button></td></a>
                 <td><button type="submit" name="editTeacherRow" class="btn btn-primary">Edit</button></td>
                 <td> <button type="submit" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
