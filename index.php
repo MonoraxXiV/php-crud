@@ -39,6 +39,14 @@ if (isset($_GET['student'])){
 if (isset($_GET['teacher'])){
     $controller = new TeacherController();
 }
+if (isset($_POST['backToStudents'])) {
+    $controller = new StudentController();
+    header("Location: http://crud.localhost?AllStudents");
+}
+if (isset($_POST['backToTeachers'])) {
+    $controller = new TeacherController();
+    header("Location: http://crud.localhost?AllTeachers");
+}
 
 
 $controller->render();
