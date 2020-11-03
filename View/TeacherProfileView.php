@@ -21,12 +21,14 @@
     <div class="card-body">
         <h4 class="card-title"><?php echo $profileTeacher['teacher_name'] ?></h4>
         <p class="card-text">
-            student id: <?php echo $profileTeacher['teacher_id'] . '<br>' ?>
+            teacher id: <?php echo $profileTeacher['teacher_id'] . '<br>' ?>
             e-mail: <?php echo $profileTeacher['teacher_email'] . '<br>' ?>
             class: <?php echo $profileTeacher['teacher_class'] ?>
         </p>
     </div>
-    <button type="submit" name="backToMain" class="btn btn-primary m-auto">Go Back To Teacher overview</button>
+    <form method="post">
+    <button type="submit" name="backToTeachers" class="btn btn-primary m-auto">Go Back To Teacher overview</button>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -27,7 +27,9 @@
             class: <?php echo $profileStudent['student_class'] ?>
         </p>
     </div>
-    <button type="submit" name="backToStudent" class="btn btn-primary m-auto">Go Back To Student Overview</button>
+    <form method="post">
+    <button type="submit" name="backToStudents" class="btn btn-primary m-auto">Go Back To Student Overview</button>
+    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
