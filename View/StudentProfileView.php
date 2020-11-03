@@ -24,13 +24,13 @@
         <p class="card-text">
             student id: <?php echo $profileStudent['student_id'].'<br>' ?>
             e-mail: <?php echo $profileStudent['student_email'].'<br>' ?>
-            class: <?php echo $getClassName ?> <br>
+           <!-- class: <a href="?class=<?=$class["class_id"]?>"><?php $getClassName ?></a> <br> -->
             teacher: <?php echo $getTeacherName; ?>
         </p>
     </div>
     <form method="post">
-        <button type="submit" name="editTeacherRow" class="btn btn-primary mb-2 ">Edit</button>
-        <button type="submit" name="deleteTeacherProfile" class="btn btn-primary mb-2 ">Delete</button>
+        <button type="submit" name="editStudentProfile" class="btn btn-primary mb-2 ">Edit</button>
+        <button type="submit" name="deleteStudentProfile" class="btn btn-primary mb-2 ">Delete</button>
         <br>
     <button type="submit" name="backToStudents" class="btn btn-primary m-auto">Go Back To Student Overview</button>
     </form>
