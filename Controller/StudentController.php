@@ -8,27 +8,22 @@ class StudentController
     {
         $connection = new Connection();
         $showStudents = $connection->displayStudent();
+        $classes = $connection->displayClass();
+        $form = "";
+        if (isset($_POST['addNewStudent'])){
+            require "View/RegistrationStudentView.php";
 
-        $sName = $sClass = $sEmail = $form = "";
-        $sNameError = $sClassError = $sEmailError = "";
+        }
+        if (isset($_POST['confirm'])) {
+            $StudentName = $_POST["StudentName"];
+            $StudentEmail = $_POST["StudentEmail"];
+            $classID = $_POST["class"];
+            if ((!empty($StudentName) && (!empty($StudentEmail)))) {
+                $student = new Student($StudentName, $StudentEmail, intval($classID));
+                $connection->insertStudent($student);
+                header("Location: http://crud.localhost/?student");
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            if (empty($_POST["student_name"])) {
-                $sNameError = "* Student name required!";
-            } else {
-                $sName = $_POST["student_name"];
             }
-
-            if (empty($_POST["student_email"])) {
-                $sEmailError = "* Student email required!";
-            } else {
-                $sEmail = $_POST["student_email"];
-            }
-
-/*            $students = new Student($sName, $sEmail);*/
-/*            $connection->insertStudent($students);*/
-
         }
 
         require "View/StudentView.php";
