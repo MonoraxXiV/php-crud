@@ -75,34 +75,44 @@ class Connection
         return $displayClasses;
     }
 
-    public function profileStudent()
+    public function profileStudent($studentId)
     {
         $studentId = $_GET['student'];
-        $handle = $this->openConnection()->prepare("SELECT * FROM student where id = :id");
-        $handle->bindParam(':id', $studentId);
+        $handle = $this->openConnection()->prepare("SELECT * FROM student where student_id = :student_id");
+        $handle->bindParam(':student_id', $studentId);
         $handle->execute();
         $profileStudent = $handle->fetch();
         return $profileStudent;
     }
 
-    public function profileTeacher()
+    public function profileTeacher($teacherId)
     {
         $teacherId = $_GET['teacher'];
-        $handle = $this->openConnection()->prepare("SELECT * FROM teacher where id = :id");
-        $handle->bindParam(':id', $teacherId);
+        $handle = $this->openConnection()->prepare("SELECT * FROM teacher where teacher_id = :teacher_id");
+        $handle->bindParam(':teacher_id', $teacherId);
         $handle->execute();
         $profileTeacher = $handle->fetch();
         return $profileTeacher;
     }
 
-    public function profileClass()
+    public function profileClass($classId)
     {
         $classId = $_GET['class'];
-        $handle = $this->openConnection()->prepare("SELECT * FROM class where id = :id");
-        $handle->bindParam(':id', $classId);
+        $handle = $this->openConnection()->prepare("SELECT * FROM class where class_id = :class_id");
+        $handle->bindParam(':class_id', $classId);
         $handle->execute();
         $profileClass = $handle->fetch();
         return $profileClass;
+    }
+
+    public function updateStudent(string $sName, string $sEmail, int $sClass, int $studentId)
+    {
+        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :sName, student_email = :sEmail, student_class = :sClass WHERE student_id = :student_id');
+        $handle->bindParam(':sName', $sName);
+        $handle->bindParam(':sEmail', $sEmail);
+        $handle->bindParam(':sClass', $sClass);
+        $handle->bindParam(':student_id', $studentId);
+        $handle->execute();
     }
 
 
