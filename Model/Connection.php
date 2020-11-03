@@ -102,12 +102,11 @@ class Connection
         return $profileClass;
     }
 
-    public function updateStudent(string $sName, string $sEmail, int $sClass, int $studentId)
+    public function updateStudent(string $sName, string $sEmail, int $studentId)
     {
-        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :sName, student_email = :sEmail, student_class = :sClass WHERE student_id = :student_id');
+        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :sName, student_email = :sEmail WHERE student_id = :student_id');
         $handle->bindParam(':student_name', $sName);
         $handle->bindParam(':student_email', $sEmail);
-        $handle->bindParam(':student_class', $sClass);
         $handle->bindParam(':student_id', $studentId);
         $handle->execute();
     }
@@ -149,10 +148,10 @@ class Connection
 
     public function getStudentsFromClass($studentClassId)
     {
-        $handle = $this->openConnection()->prepare('SELECT student_name FROM student WHERE student_class = :student_class');
+        $handle = $this->openConnection()->prepare('SELECT * FROM student WHERE student_class = :student_class');
         $handle->bindParam('student_class', $studentClassId);
         $handle->execute();
-        return $handle->fetch();
+        return $handle->fetchAll();
     }
 
 
