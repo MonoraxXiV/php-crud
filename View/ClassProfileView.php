@@ -76,7 +76,7 @@
         </style>
     </div>
     <form method="post">
-        <button type="submit" name="backToclasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
+        <button type="submit" name="backToClasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
     </form>
 </div>
 </body>

@@ -5,6 +5,7 @@ class ClassController
 {
     public function render()
     {
+        $view = "View/ClassView.php";
         $form = "";
         $connection = new Connection();
         $classes = $connection->displayClass();
@@ -35,8 +36,13 @@ class ClassController
 
             }
         }
+        if (isset($_GET["class"])) {
+            $classId = $_GET["class"];
+            $studentList = $connection->getStudentsFromClass($classId);
+            $view = "View/ClassProfileView.php";
+        }
 
 
-        require "View/ClassView.php";
+        require $view;
     }
 }
