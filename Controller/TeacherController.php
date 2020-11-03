@@ -3,49 +3,34 @@
 
 class TeacherController
 {
-    /*
-    private string $teacherNameError;
-    private string $teacherEmailError;
-    private string $teacherClassError;
-    private string $teacher_Class;
-*/
     public function render()
     {
-
-        $connect = new Connection();
-        $connect->openConnection();
-        $Teachers = $connect->displayTeacher();
-        $form = "";
-        if (isset($_POST['addNewTeacher'])) {
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if (empty($_POST['name'])) {
-                    $this->teacherNameError = "name is required" . '<br>';
+        $connection = new Connection();
+        $showTeachers= $connection->displayTeacher();
+        $classes = $connection->displayClass();
+        $arrayClass = [];
+        foreach ($showTeachers as $teacher){
+            array_push($arrayClass, $teacher['teacher_class']);
+        }
+        var_dump($arrayClass);
+        if (isset($_POST['addNewTeacher'])){
+            require "View/RegistrationTeacherView.php";
+        }
+        if (isset($_POST['confirmTeacher'])) {
+            $TeacherName = $_POST["TeacherName"];
+            $TeacherEmail = $_POST["TeacherEmail"];
+            $classTeacherID = $_POST["TeacherClass"];
+            if ((!empty($TeacherName) && (!empty($TeacherEmail)))) {
+                if (in_array($classTeacherID, $arrayClass)){
+                    echo "Choose another class";
                 } else {
-                    $teacher_name = $_POST['name'];
+                    $teacher = new Teacher($TeacherName, $TeacherEmail, intval($classTeacherID));
+                    $connection->insertTeacher($teacher);
+                    header("Location: http://crud.localhost/?teacher");
                 }
-
-                if (empty($_POST['email'])) {
-                    $this->teacherEmailError = "email is required" . '<br>';
-                } else {
-                    $teacher_email = $_POST['email'];
-                }
-
-                if (empty($_POST['ClassName'])) {
-                    $this->teacherClassError = " Class name is required" . '<br>';
-                } else {
-                    $teacher_class = $_POST['ClassName'];
-                }
-
-
-                if ($this->teacherNameError == "" && $this->teacherEmailError == "" ) {
-                    $teacher = new Teacher($teacher_name, $teacher_email);
-                    $connect->insertTeacher($teacher);
-
-                }
-
-
             }
         }
+
         require 'View/TeacherView.php';
     }
 }

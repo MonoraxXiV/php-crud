@@ -7,8 +7,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
-          rel="stylesheet"/>
     <title>Teacher registration</title>
 </head>
 <body>
@@ -20,14 +18,12 @@
         <td>NAME</td>
         <td>EMAIL</td>
         <td>CLASS</td>
-        <?php foreach ($Teachers as $Teacher): ?>
+        <?php foreach ($showTeachers as $Teacher): ?>
             <tr>
                 <td><?php echo $Teacher['teacher_id'] ?></td>
                 <td><?php echo $Teacher['teacher_name'] ?></td>
                 <td><?php echo $Teacher['teacher_email']  ?></td>
                 <td><?php echo $Teacher['teacher_class']  ?></td>
-                <td><button type="submit" name="editTeacherRow" class="btn btn-primary">Edit</button></td>
-                <td> <button type="submit" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -37,7 +33,6 @@
     <button type="submit" name="addNewTeacher" class="btn btn-primary">Add Teacher</button>
     <button type="submit" name="backToMain" class="btn btn-primary">Go Back To Main Page</button>
 </form>
-<?php echo $form; ?>
 </div>
 <style>
     .container {
@@ -65,20 +60,6 @@
         background-color: #4CAF50;
         color: white;
 </style>
-<!--
-<form  method="post">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name" ><br>
 
-    <label for="email">e-mail:</label><br>
-    <input type="text" id="email" name="email" value=""><br>
-
-    <label for="ClassName">Class:</label><br>
-    <input type="text" id="ClassName" name="ClassName" value=""><br>
-
-    <input type="submit" value="Submit">
-
-</form>
---->
 </body>
 </html>
