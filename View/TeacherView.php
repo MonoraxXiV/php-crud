@@ -24,6 +24,8 @@
                 <td><?php echo $Teacher['teacher_name'] ?></td>
                 <td><?php echo $Teacher['teacher_email']  ?></td>
                 <td><?php echo $Teacher['teacher_class']  ?></td>
+                <td><button type="submit" name="editTeacherRow" class="btn btn-primary">Edit</button></td>
+                <td> <button type="submit" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
