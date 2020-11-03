@@ -7,14 +7,13 @@ class TeacherController
     {
         $view = 'View/TeacherView.php';
         $connection = new Connection();
-        $showTeachers= $connection->displayTeacher();
+        $showTeachers = $connection->displayTeacher();
         $classes = $connection->displayClass();
         $arrayClass = [];
-        foreach ($showTeachers as $teacher){
+        foreach ($showTeachers as $teacher) {
             array_push($arrayClass, $teacher['teacher_class']);
         }
-        var_dump($arrayClass);
-        if (isset($_POST['addNewTeacher'])){
+        if (isset($_POST['addNewTeacher'])) {
             require "View/RegistrationTeacherView.php";
         }
         if (isset($_POST['confirmTeacher'])) {
@@ -22,7 +21,7 @@ class TeacherController
             $TeacherEmail = $_POST["TeacherEmail"];
             $classTeacherID = $_POST["TeacherClass"];
             if ((!empty($TeacherName) && (!empty($TeacherEmail)))) {
-                if (in_array($classTeacherID, $arrayClass)){
+                if (in_array($classTeacherID, $arrayClass)) {
                     echo "Choose another class";
                 } else {
                     $teacher = new Teacher($TeacherName, $TeacherEmail, intval($classTeacherID));
@@ -36,6 +35,13 @@ class TeacherController
             $teacherId = $_GET["teacher"];
             $profileTeacher = $connection->profileTeacher($teacherId);
             $view = "View/TeacherProfileView.php";
+            if ($profileTeacher['teacher_class'] !== null) {
+                $getClassName = $connection->getClassName($profileTeacher['teacher_class']);
+                $getClassName = $getClassName['class_name'];
+            } else {
+                $getClassName = "";
+                $getTeacherName = "";
+            }
         }
 
         require $view;
