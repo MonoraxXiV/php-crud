@@ -11,9 +11,9 @@
 <body>
 <h1>Home Page</h1>
 <form method='get'>
-        <button type='submit' name='class' class='btn btn-primary'>Class</button>
-        <button type='submit' name='student' class='btn btn-primary'>Student</button>
-        <button type='submit' name='teacher' class='btn btn-primary'>Teacher</button>
+        <button type='submit' name='AllClasses' class='btn btn-primary'>Class</button>
+        <button type='submit' name='AllStudents' class='btn btn-primary'>Student</button>
+        <button type='submit' name='AllTeachers' class='btn btn-primary'>Teacher</button>
 </form>
 <style>
     body {

@@ -16,7 +16,7 @@ require_once "Controller/TeacherController.php";
 
 $controller = new HomepageController();
 
-if (isset($_GET['class'])) {
+if (isset($_GET['AllClasses'])) {
     $controller = new classController();
 }
 
@@ -25,15 +25,16 @@ if (isset($_POST['backToMain'])) {
     header("Location: http://crud.localhost/");
 }
 
-if (isset($_GET['student'])) {
+if (isset($_GET['AllStudents'])) {
     $controller = new StudentController();
 }
-if (isset($_GET['user'])){
+
+if (isset($_GET['student'])){
     $controller = new StudentController();
 
 }
 
-if (isset($_GET['teacher'])){
+if (isset($_GET['AllTeachers'])){
     $controller= new TeacherController();
 }
 $controller->render();

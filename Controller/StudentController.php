@@ -22,7 +22,7 @@ class StudentController
             if ((!empty($StudentName) && (!empty($StudentEmail)))) {
                 $student = new Student($StudentName, $StudentEmail, intval($classID));
                 $connection->insertStudent($student);
-                header("Location: http://crud.localhost/?student");
+                header("Location: http://crud.localhost/?AllStudents");
 
             }
         }
@@ -31,7 +31,6 @@ class StudentController
             $studentId = $_GET["student"];
             $profileStudent = $connection->profileStudent($studentId);
             $view = "View/StudentProfileView.php";
-
         }
 
         require $view;
