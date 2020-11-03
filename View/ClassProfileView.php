@@ -26,16 +26,12 @@
                     <td>ID</td>
                     <td>NAME</td>
                     <td>EMAIL</td>
-                    <td>CLASS</td>
-                    <td>ASSIGNED TEACHER</td>
                     <td>PROFILE</td>
                     <?php foreach ($studentList as $studentFromClass): ?>
                         <tr>
                             <td><?php echo $studentFromClass['student_id'] ?></td>
                             <td><?php echo $studentFromClass['student_name'] ?></td>
                             <td><?php echo $studentFromClass['student_email'] ?></td>
-                            <td><?php echo $studentFromClass['student_class']  ?></td>
-                            <td></td>
                             <td><a href="?student=<?=$studentFromClass["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
                         </tr>
 
@@ -47,7 +43,12 @@
 
             <?php echo $form; ?>
         </div>
-
+        <form method="post">
+            <button type="submit" name="editTeacherRow" class="btn btn-primary mb-2 ">Edit</button>
+            <button type="submit" name="deleteTeacherProfile" class="btn btn-primary mb-2 ">Delete</button>
+            <br>
+            <button type="submit" name="backToClasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
+        </form>
         <style>
             .container {
                 width: 50%;
@@ -75,9 +76,7 @@
                 color: white;
         </style>
     </div>
-    <form method="post">
-        <button type="submit" name="backToClasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
-    </form>
+
 </div>
 </body>
 </html>

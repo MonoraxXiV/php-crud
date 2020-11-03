@@ -27,6 +27,9 @@
         </p>
     </div>
     <form method="post">
+        <button type="submit" name="editTeacherRow" class="btn btn-primary mb-2 ">Edit</button>
+        <button type="submit" name="deleteTeacherProfile" class="btn btn-primary mb-2 ">Delete</button>
+        <br>
     <button type="submit" name="backToTeachers" class="btn btn-primary m-auto">Go Back To Teacher overview</button>
     </form>
 </div>
