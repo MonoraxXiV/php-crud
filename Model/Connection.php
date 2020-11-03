@@ -104,7 +104,7 @@ class Connection
 
     public function updateStudent(string $sName, string $sEmail, int $studentId)
     {
-        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :sName, student_email = :sEmail WHERE student_id = :student_id');
+        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :student_name, student_email = :student_email WHERE student_id = :student_id');
         $handle->bindParam(':student_name', $sName);
         $handle->bindParam(':student_email', $sEmail);
         $handle->bindParam(':student_id', $studentId);
@@ -113,7 +113,7 @@ class Connection
 
     public function updateTeacher(string $tName, string $tEmail, int $tClass, int $teacherId)
     {
-        $handle = $this->openConnection()->prepare('UPDATE teacher SET teacher_name = :tName, teacher_email = :tEmail, teacher_class = :tClass WHERE teacher_id = :teacher_id');
+        $handle = $this->openConnection()->prepare('UPDATE teacher SET teacher_name = :teacher_name, teacher_email = :teacher_email, teacher_class = :teacher_class WHERE teacher_id = :teacher_id');
         $handle->bindParam(':teacher_name', $tName);
         $handle->bindParam(':teacher_email', $tEmail);
         $handle->bindParam(':teacher_class', $tClass);
@@ -123,7 +123,7 @@ class Connection
 
     public function updateClass(string $cName, string $cLocation, int $classId)
     {
-        $handle = $this->openConnection()->prepare('UPDATE class SET class_name = :cName, class_location = :cLocation WHERE class_id = :class_id');
+        $handle = $this->openConnection()->prepare('UPDATE class SET class_name = :class_name, class_location = :class_location WHERE class_id = :class_id');
         $handle->bindParam(':class_name', $cName);
         $handle->bindParam(':class_location', $cLocation);
         $handle->bindParam(':class_id', $classId);
@@ -153,6 +153,22 @@ class Connection
         $handle->execute();
         return $handle->fetchAll();
     }
+
+    public function deleteStudent($studentId)
+    {
+        $handle = $this->openConnection()->prepare('DELETE FROM student WHERE student_id = :student_id');
+        $handle->bindParam(':student_id', $studentId);
+        $handle->execute();
+    }
+
+    public function deleteTeacher($teacherId)
+    {
+        $handle = $this->openConnection()->prepare('DELETE FROM teacher WHERE teacher_id = :teacher_id');
+        $handle->bindParam(':teacher_id', $teacherId);
+        $handle->execute();
+    }
+    
+    
 
 
 
