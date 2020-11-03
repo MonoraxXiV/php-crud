@@ -26,8 +26,6 @@
                     <td><?php echo $student['student_id'] ?></td>
                     <td><?php echo $student['student_name'] ?></td>
                     <td><?php echo $student['student_email'] ?></td>
-                    <td><?php echo $student['student_class']  ?></td>
-                    <td></td>
                     <td><a href="?student=<?=$student["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
                     <td><button type="submit" name="editStudentRow" class="btn btn-primary">Edit</button></td>
                     <td> <button type="submit" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
