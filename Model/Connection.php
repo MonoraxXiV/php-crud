@@ -131,6 +131,14 @@ class Connection
         $handle->execute();
     }
 
+    public function getClassName($classId)
+    {
+        $handle = $this->openConnection()->prepare('SELECT class_name FROM class WHERE class_id = :class_id');
+        $handle->bindParam('class_id', $classId);
+        $handle->execute();
+        return $handle->fetch();
+    }
+
 
 
 
