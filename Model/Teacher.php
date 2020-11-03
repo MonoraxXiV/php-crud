@@ -15,12 +15,12 @@ class Teacher extends Student
      * @param string $teacher_email
      * @param int $teacher_class
      */
-    public function __construct( string $teacher_name, string $teacher_email, int $teacher_class)
+    public function __construct( string $teacher_name, string $teacher_email)
     {
 
         $this->teacher_name = $teacher_name;
         $this->teacher_email = $teacher_email;
-        $this->teacher_class = $teacher_class;
+
     }
 
     /**
