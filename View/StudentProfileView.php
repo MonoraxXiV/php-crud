@@ -24,7 +24,8 @@
         <p class="card-text">
             student id: <?php echo $profileStudent['student_id'].'<br>' ?>
             e-mail: <?php echo $profileStudent['student_email'].'<br>' ?>
-            class: <?php echo $getClassName['class_name']; ?>
+            class: <?php echo $getClassName['class_name']. '<br>' ?>
+            teacher: <?php echo $getTeacherName['teacher_name']; ?>
         </p>
     </div>
     <form method="post">

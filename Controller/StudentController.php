@@ -32,6 +32,8 @@ class StudentController
             $profileStudent = $connection->profileStudent($studentId);
             $studentClassId = $profileStudent['student_class'];
             $getClassName = $connection->getClassName($studentClassId);
+            $getTeacherName = $connection->getTeacherName($studentClassId);
+
             $view = "View/StudentProfileView.php";
 
 
