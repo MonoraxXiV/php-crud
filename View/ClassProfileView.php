@@ -13,69 +13,83 @@
 <body style="background-color: plum">
 
 
-
 <div class="card ml-5 mr-5 shadow-lg p-1">
 
     <div class="card-body">
+        <h4 class="card-title"><?php echo "Class information" ?></h4>
+        <p class="card-text">
 
-        <div class="container">
-            <h1>All Classes</h1>
-            <form method="get">
-                <table id ='customers'>
-                    <tbody>
-                    <td>ID</td>
-                    <td>NAME</td>
-                    <td>EMAIL</td>
-                    <td>PROFILE</td>
-                    <?php foreach ($studentList as $studentFromClass): ?>
-                        <tr>
-                            <td><?php echo $studentFromClass['student_id'] ?></td>
-                            <td><?php echo $studentFromClass['student_name'] ?></td>
-                            <td><?php echo $studentFromClass['student_email'] ?></td>
-                            <td><a href="?student=<?=$studentFromClass["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
-                        </tr>
-
-
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </form> <br>
-
-            <?php echo $form; ?>
-        </div>
-        <form method="post">
-            <button type="submit" name="editClassProfile" class="btn btn-primary mb-2 ">Edit</button>
-            <button type="submit" name="deleteClassProfile" class="btn btn-primary mb-2 ">Delete</button>
-            <br>
-            <button type="submit" name="backToClasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
-        </form>
-        <style>
-            .container {
-                width: 50%;
-            }
-            #customers {
-                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-            }
-
-            #customers td, #customers th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
-
-            #customers tr:nth-child(even){background-color: #f2f2f2;}
-
-            #customers tr:hover {background-color: #ddd;}
-
-            #customers th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #4CAF50;
-                color: white;
-        </style>
+            id: <?php echo $profileClass['class_id'] .'<br>' ?>
+            class name: <?php echo $profileClass['class_name'] .'<br>'?>
+            Location: <?php echo $profileClass['class_location'] .'<br>' ?>
+        </p>
     </div>
+    <form method="get">
+        <table id='customers'>
+            <tbody>
+            <td>ID</td>
+            <td>NAME</td>
+            <td>EMAIL</td>
+            <td>PROFILE</td>
+
+            <?php foreach ($studentList as $studentFromClass): ?>
+                <tr>
+                    <td><?php echo $studentFromClass['student_id'] ?></td>
+                    <td><?php echo $studentFromClass['student_name'] ?></td>
+                    <td><?php echo $studentFromClass['student_email'] ?></td>
+                    <td><a href="?student=<?= $studentFromClass["student_id"] ?>">
+                            <button type="button" name="studentId" class="btn btn-primary">Profile</button></td>
+                    </a>
+                </tr>
+
+
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </form>
+    <br>
+
+    <?php echo $form; ?>
+    <form method="post">
+        <button type="submit" name="editClassProfile" class="btn btn-primary mb-2 ">Edit</button>
+        <button type="submit" name="deleteClassProfile" class="btn btn-primary mb-2 ">Delete</button>
+        <br>
+        <button type="submit" name="backToClasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
+    </form>
+</div>
+
+<style>
+    .container {
+        width: 50%;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+</style>
+</div>
 
 </div>
 </body>

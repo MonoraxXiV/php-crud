@@ -11,15 +11,13 @@
 </head>
 <body>
 <div class="container">
-    <h1>All Classes</h1>
+    <h1> <?php echo "List of students" ?></h1>
     <form method="get">
         <table id ='customers'>
             <tbody>
             <td>ID</td>
             <td>NAME</td>
             <td>EMAIL</td>
-            <td>CLASS</td>
-            <td>ASSIGNED TEACHER</td>
             <td>PROFILE</td>
             <?php foreach ($showStudents as $student): ?>
                 <tr>
