@@ -24,7 +24,7 @@
         <p class="card-text">
             student id: <?php echo $profileStudent['student_id'].'<br>' ?>
             e-mail: <?php echo $profileStudent['student_email'].'<br>' ?>
-           <!-- class: <a href="?class=<?=$class["class_id"]?>"><?php $getClassName ?></a> <br> -->
+            class: <a href="?class=<?=$profileStudent["student_class"]?>"><?php echo $getClassName ?></a> <br>
             teacher: <?php echo $getTeacherName; ?>
         </p>
     </div>
