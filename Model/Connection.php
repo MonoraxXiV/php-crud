@@ -77,7 +77,6 @@ class Connection
 
     public function profileStudent($studentId)
     {
-        $studentId = $_GET['student'];
         $handle = $this->openConnection()->prepare("SELECT * FROM student where student_id = :student_id");
         $handle->bindParam(':student_id', $studentId);
         $handle->execute();
@@ -87,7 +86,6 @@ class Connection
 
     public function profileTeacher($teacherId)
     {
-        $teacherId = $_GET['teacher'];
         $handle = $this->openConnection()->prepare("SELECT * FROM teacher where teacher_id = :teacher_id");
         $handle->bindParam(':teacher_id', $teacherId);
         $handle->execute();
@@ -97,7 +95,6 @@ class Connection
 
     public function profileClass($classId)
     {
-        $classId = $_GET['class'];
         $handle = $this->openConnection()->prepare("SELECT * FROM class where class_id = :class_id");
         $handle->bindParam(':class_id', $classId);
         $handle->execute();
@@ -108,10 +105,29 @@ class Connection
     public function updateStudent(string $sName, string $sEmail, int $sClass, int $studentId)
     {
         $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :sName, student_email = :sEmail, student_class = :sClass WHERE student_id = :student_id');
-        $handle->bindParam(':sName', $sName);
-        $handle->bindParam(':sEmail', $sEmail);
-        $handle->bindParam(':sClass', $sClass);
+        $handle->bindParam(':student_name', $sName);
+        $handle->bindParam(':student_email', $sEmail);
+        $handle->bindParam(':student_class', $sClass);
         $handle->bindParam(':student_id', $studentId);
+        $handle->execute();
+    }
+
+    public function updateTeacher(string $tName, string $tEmail, int $tClass, int $teacherId)
+    {
+        $handle = $this->openConnection()->prepare('UPDATE teacher SET teacher_name = :tName, teacher_email = :tEmail, teacher_class = :tClass WHERE teacher_id = :teacher_id');
+        $handle->bindParam(':teacher_name', $tName);
+        $handle->bindParam(':teacher_email', $tEmail);
+        $handle->bindParam(':teacher_class', $tClass);
+        $handle->bindParam(':teacher_id', $teacherId);
+        $handle->execute();
+    }
+
+    public function updateClass(string $cName, string $cLocation, int $classId)
+    {
+        $handle = $this->openConnection()->prepare('UPDATE class SET class_name = :cName, class_location = :cLocation WHERE class_id = :class_id');
+        $handle->bindParam(':class_name', $cName);
+        $handle->bindParam(':class_location', $cLocation);
+        $handle->bindParam(':class_id', $classId);
         $handle->execute();
     }
 
