@@ -44,8 +44,8 @@
             <?php echo $form; ?>
         </div>
         <form method="post">
-            <button type="submit" name="editTeacherRow" class="btn btn-primary mb-2 ">Edit</button>
-            <button type="submit" name="deleteTeacherProfile" class="btn btn-primary mb-2 ">Delete</button>
+            <button type="submit" name="editClassProfile" class="btn btn-primary mb-2 ">Edit</button>
+            <button type="submit" name="deleteClassProfile" class="btn btn-primary mb-2 ">Delete</button>
             <br>
             <button type="submit" name="backToClasses" class="btn btn-primary m-auto">Go Back To Class overview</button>
         </form>
