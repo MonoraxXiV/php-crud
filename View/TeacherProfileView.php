@@ -23,7 +23,7 @@
         <p class="card-text">
             teacher id: <?php echo $profileTeacher['teacher_id'] . '<br>' ?>
             e-mail: <?php echo $profileTeacher['teacher_email'] . '<br>' ?>
-            class: <?php echo $getClassName ?>
+            class: <a href="?class=<?=$profileTeacher["teacher_class"]?>"><?php echo $getClassName ?></a>
         </p>
     </div>
     <form method="post">
