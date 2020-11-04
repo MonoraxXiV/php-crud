@@ -12,15 +12,15 @@ class ClassController
         if (isset($_POST['addNewClass'])) {
             require_once "View/RegistrationClassView.php";
         }
-            if (isset($_POST['confirm'])) {
-                $className = $_POST["ClassName"];
-                $classLocation = $_POST["ClassLocation"];
-                if ((!empty($className) && (!empty($classLocation)))) {
-                    $class = new ClassModel($className, $classLocation);
-                    $connection->insertClass($class);
-                    header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=");
-                }
+        if (isset($_POST['confirm'])) {
+            $className = $_POST["ClassName"];
+            $classLocation = $_POST["ClassLocation"];
+            if ((!empty($className) && (!empty($classLocation)))) {
+                $class = new ClassModel($className, $classLocation);
+                $connection->insertClass($class);
+                header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
             }
+        }
 
         if (isset($_GET["class"])) {
             $classId = $_GET["class"];
@@ -49,10 +49,15 @@ class ClassController
                 $ClassNameOverview = $_POST["ClassName"];
                 $ClassLocationOverview = $_POST["ClassName"];
                 if ((!empty($ClassNameOverview) && (!empty($ClassLocationOverview)))) {
-                    $updateStudent = $connection->updateClass($ClassLocationOverview, $ClassLocationOverview, intval($overviewClassId));
-                    header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=");
+                    $updateClass = $connection->updateClass($ClassLocationOverview, $ClassLocationOverview, intval($overviewClassId));
+                    header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
                 }
             }
+        }
+        if (isset($_POST['delete'])) {
+            $overviewClassId = $_POST['delete'];
+            $deleteClass = $connection->deleteClass($overviewClassId);
+            header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
         }
         require $view;
     }

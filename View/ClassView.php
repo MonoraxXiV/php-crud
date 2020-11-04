@@ -26,7 +26,7 @@
                     <td><?php echo $class['class_location']  ?></td>
                     <td><a href="?class=<?=$class["class_id"]?>"><button type="button" name="studentList" class="btn btn-primary"><?php echo $class['class_name']."'s students"?></button></td></a>
                     <td><button type="submit" value="<?php echo $class['class_id'] ?>" name="AllClasses" class="btn btn-primary">Edit</button></td>
-                    <td> <button type="submit" name="deleteClassRow" class="btn btn-primary">Delete</button></td>
+                    <td><button type="submit" formmethod="post" value="<?php echo $class['class_id'] ?>" name="delete" class="btn btn-primary">Delete</button></td>
                 </tr>
             <?php endforeach ?>
             </tbody>
