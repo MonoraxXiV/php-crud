@@ -22,6 +22,7 @@
             id: <?php echo $connection->profileClass($classId)['class_id'] .'<br>' ?>
             class name: <?php echo $connection->profileClass($classId)['class_name'] .'<br>'?>
             Location: <?php echo $connection->profileClass($classId)['class_location'] .'<br>' ?>
+            Teacher: <a href="?teacher=<?=$connection->getTeacherId($classId)['teacher_id']?>"><?php echo $connection->getTeacherName($classId)['teacher_name'] .'<br>' ?></a>
         </p>
     </div>
     <form method="get">

@@ -145,6 +145,14 @@ class Connection
         return $handle->fetch();
     }
 
+    public function getTeacherId($teacherClassId)
+    {
+        $handle = $this->openConnection()->prepare('SELECT teacher_id FROM teacher where teacher_class = :teacher_class');
+        $handle->bindParam('teacher_class', $teacherClassId);
+        $handle->execute();
+        return $handle->fetch();
+    }
+
     public function getStudentsFromClass($studentClassId)
     {
         $handle = $this->openConnection()->prepare('SELECT * FROM student WHERE student_class = :student_class');
