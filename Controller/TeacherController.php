@@ -50,8 +50,9 @@ class TeacherController
             if (isset($_POST["confirmTeacherUpdate"])) {
                 $teacherName = $_POST["TeacherName"];
                 $teacherEmail = $_POST["TeacherEmail"];
+                $teacherClass = $_POST["TeacherClass"];
                 if ((!empty($teacherName) && (!empty($teacherEmail)))) {
-                    $updateTeacher = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
+                    $updateTeacher = $connection->updateTeacher($teacherName, $teacherEmail,$teacherClass, intval($teacherId));
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?teacher=$teacherId");
 
                 }
@@ -69,8 +70,9 @@ class TeacherController
             if (isset($_POST["confirmTeacherUpdate"])) {
                 $teacherNameOverview = $_POST["TeacherName"];
                 $teacherEmailOverview = $_POST["TeacherEmail"];
+                $teacherClassOverview = $_POST["TeacherClass"];
                 if ((!empty($teacherNameOverview) && (!empty($teacherEmailOverview)))) {
-                    $updateStudent = $connection->updateTeacher($teacherNameOverview, $teacherEmailOverview, intval($overviewTeacherId));
+                    $updateStudent = $connection->updateTeacher($teacherNameOverview, $teacherEmailOverview, $teacherClassOverview, intval($overviewTeacherId));
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
                 }
             }

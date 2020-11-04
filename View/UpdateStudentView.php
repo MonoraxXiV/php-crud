@@ -10,7 +10,7 @@
         </div>
         <div class='form-group col-md-6'>
             <div class='CN'>
-                <select name='class' id='products'>";
+                <select name='class' >";
                     <?php foreach ( $classes as $class ):?>
                     <option value = <?php echo $class['class_id'] ?>>  <?php echo$class['class_name']?> </option>
                     <?php endforeach; ?> </select>

@@ -53,8 +53,9 @@ class StudentController
             if (isset($_POST["confirmStudentUpdate"])) {
                 $studentName = $_POST["StudentName"];
                 $studentEmail = $_POST["StudentEmail"];
+                $studentClass = $_POST["class"];
                 if ((!empty($studentName) && (!empty($studentEmail)))) {
-                    $updateStudent = $connection->updateStudent($studentName, $studentEmail, intval($studentId));
+                    $updateStudent = $connection->updateStudent($studentName, $studentEmail,$studentClass, intval($studentId));
                     header('Location: '.$_SERVER['PHP_SELF']."?student=$studentId");
 
                 }
@@ -68,8 +69,9 @@ class StudentController
             if (isset($_POST["confirmStudentUpdate"])) {
                 $studentNameOverview = $_POST["StudentName"];
                 $studentEmailOverview = $_POST["StudentEmail"];
+                $studentClassOverview = $_POST["class"];
                 if ((!empty($studentNameOverview) && (!empty($studentEmailOverview)))) {
-                    $updateStudent = $connection->updateStudent($studentNameOverview, $studentEmailOverview, intval($overviewStudentId));
+                    $updateStudent = $connection->updateStudent($studentNameOverview, $studentEmailOverview, $studentClassOverview, intval($overviewStudentId));
                     header('Location: '.$_SERVER['PHP_SELF']."?AllStudents=");
                 }
             }
