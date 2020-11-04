@@ -20,7 +20,7 @@ class StudentController
             if ((!empty($StudentName) && (!empty($StudentEmail)))) {
                 $student = new Student($StudentName, $StudentEmail, intval($classID));
                 $connection->insertStudent($student);
-                header("Location: http://crud.localhost/?AllStudents");
+                header('Location: '.$_SERVER['PHP_SELF']."?AllStudents=");
 
             }
         }
@@ -50,7 +50,8 @@ class StudentController
                 $studentEmail = $_POST["StudentEmail"];
                 if ((!empty($studentName) && (!empty($studentEmail)))) {
                     $updateStudent = $connection->updateStudent($studentName, $studentEmail, intval($studentId));
-                    header("Location: http://crud.localhost/?student=$studentId");
+                    header('Location: '.$_SERVER['PHP_SELF']."?student=$studentId");
+
                 }
             }
         }

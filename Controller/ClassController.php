@@ -18,7 +18,7 @@ class ClassController
                 if ((!empty($className) && (!empty($classLocation)))) {
                     $class = new ClassModel($className, $classLocation);
                     $connection->insertClass($class);
-                    header("Location: http://crud.localhost/?AllClasses");
+                    header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=");
                 }
             }
 
@@ -35,7 +35,7 @@ class ClassController
             $ClassLocation = $_POST["ClassLocation"];
             if ((!empty($ClassName) && (!empty($ClassLocation)))) {
                 $updateClass = $connection->updateClass($ClassName, $ClassLocation, intval($classId));
-                header("Location: http://crud.localhost/?class=$classId");
+                header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=$classId");
             }
         }
 
@@ -50,7 +50,7 @@ class ClassController
                 $ClassLocationOverview = $_POST["ClassLocation"];
                 if ((!empty($ClassNameOverview) && (!empty($ClassLocationOverview)))) {
                     $updateClass = $connection->updateClass($ClassNameOverview, $ClassLocationOverview, intval($overviewClassId));
-                    header("Location: http://crud.localhost/?AllClasses");
+                    header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=");
                 }
             }
         }

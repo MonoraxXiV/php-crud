@@ -26,7 +26,7 @@ class TeacherController
                 } else {
                     $teacher = new Teacher($TeacherName, $TeacherEmail, intval($classTeacherID));
                     $connection->insertTeacher($teacher);
-                    header("Location: http://crud.localhost/?AllTeachers");
+                    header('Location: '.$_SERVER['PHP_SELF']."?AllTeachers=");
                 }
             }
         }
@@ -51,7 +51,8 @@ class TeacherController
             $teacherEmail = $_POST["TeacherEmail"];
             if ((!empty($teacherName) && (!empty($teacherEmail)))) {
                 $updateTeacher = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
-                header("Location: http://crud.localhost/?teacher=$teacherId");
+                header('Location: '.$_SERVER['PHP_SELF']."?teacher=$teacherId");
+
             }
         }
 
