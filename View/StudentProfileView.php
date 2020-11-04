@@ -25,7 +25,7 @@
             student id: <?php echo $profileStudent['student_id'].'<br>' ?>
             e-mail: <?php echo $profileStudent['student_email'].'<br>' ?>
             class: <a href="?class=<?=$profileStudent["student_class"]?>"><?php echo $getClassName ?></a> <br>
-            teacher: <?php echo $getTeacherName; ?>
+            teacher: <a href="?teacher=<?=$connection->getTeacherId($profileStudent['student_class'])['teacher_id']?>"><?php echo $getTeacherName .'<br>' ?></a>
         </p>
     </div>
     <form method="post">
