@@ -24,8 +24,10 @@
         <?php foreach ($showTeachers as $Teacher): ?>
         <?php
             $profileTeacher = $connection->profileTeacher($Teacher["teacher_id"]);
-            $getClassName = $connection->getClassName($profileTeacher['teacher_class']);
-            $getClassName = $getClassName['class_name'];
+            if ($profileTeacher['teacher_class'] !== null) {
+                $getClassName = $connection->getClassName($profileTeacher['teacher_class']);
+                $getClassName = $getClassName['class_name'];
+            } else $getClassName ="";
         ?>
             <tr>
                 <td><?php echo $Teacher['teacher_id'] ?></td>
