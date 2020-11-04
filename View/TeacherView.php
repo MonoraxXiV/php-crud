@@ -14,6 +14,7 @@
 <body>
 <body style="background-color: plum">
 <div class=" container bg-light mt-1 p-2 rounded-top shadow-lg ">
+    <form method="get">
     <table id ='customers'>
         <tbody>
         <td>ID</td>
@@ -36,7 +37,7 @@
                 <td><?php echo $getClassName ?></td>
                 <td><a href="?teacher=<?=$Teacher["teacher_id"]?>"><button type="button" name="TeacherId" class="btn btn-primary">Profile</button></td></a>
                 <td><button type="submit" value="<?php echo $Teacher["teacher_id"] ?>" name="AllTeachers" class="btn btn-primary">Edit</button></td>
-                <td> <button type="submit" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
+                <td><button type="submit" value="<?php echo $Teacher["teacher_id"] ?>" formmethod="post" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

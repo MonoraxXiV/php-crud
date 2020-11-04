@@ -16,6 +16,7 @@ class TeacherController
         if (isset($_POST['addNewTeacher'])) {
             require "View/RegistrationTeacherView.php";
         }
+
         if (isset($_POST['confirmTeacher'])) {
             $TeacherName = $_POST["TeacherName"];
             $TeacherEmail = $_POST["TeacherEmail"];
@@ -55,6 +56,10 @@ class TeacherController
 
                 }
             }
+            if (isset($_POST["deleteTeacherProfile"])) {
+                $deleteTeacher = $connection->deleteTeacher($teacherId);
+                header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
+            }
         }
         if (isset($_GET['AllTeachers'])) {
             if (($_GET['AllTeachers'] !== "")) {
@@ -70,7 +75,11 @@ class TeacherController
                 }
             }
         }
-
+        if (isset($_POST["deleteTeacherRow"])) {
+            $overviewTeacherId = $_POST["deleteTeacherRow"];
+            $deleteTeacher = $connection->deleteTeacher(intval($overviewTeacherId));
+            header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
+        }
         require $view;
     }
 }
