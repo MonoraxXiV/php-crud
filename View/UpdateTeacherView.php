@@ -18,5 +18,5 @@
         </div>
     </div>
     </div>
-    <button type='submit' name='confirmUpdate' class='btn btn-primary'>Confirm</button>
+    <button type='submit' name='confirmTeacherUpdate' class='btn btn-primary'>Confirm</button>
 </form>

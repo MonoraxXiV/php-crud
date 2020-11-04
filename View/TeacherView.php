@@ -33,7 +33,7 @@
                 <td><?php echo $Teacher['teacher_email']  ?></td>
                 <td><?php echo $getClassName ?></td>
                 <td><a href="?teacher=<?=$Teacher["teacher_id"]?>"><button type="button" name="TeacherId" class="btn btn-primary">Profile</button></td></a>
-                <td><button type="submit" name="editTeacherRow" class="btn btn-primary">Edit</button></td>
+                <td><button type="submit" value="<?php echo $Teacher["teacher_id"] ?>" name="AllTeachers" class="btn btn-primary">Edit</button></td>
                 <td> <button type="submit" name="deleteTeacherRow" class="btn btn-primary">Delete</button></td>
             </tr>
         <?php endforeach; ?>

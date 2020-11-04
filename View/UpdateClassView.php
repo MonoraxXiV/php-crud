@@ -9,5 +9,5 @@
             <input type='text' name='ClassLocation' id='ClassLocation' class='form-control' value=''>
         </div>
     </div>
-    <button type='submit' name='confirmUpdate' class='btn btn-primary'>Confirm</button>
+    <button type='submit' name='confirmClassUpdate' class='btn btn-primary'>Confirm</button>
 </form>

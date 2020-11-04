@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>List of students</title>
+    <title>Users</title>
 </head>
 <body>
 <div class="container">
@@ -25,11 +25,9 @@
                     <td><?php echo $student['student_name'] ?></td>
                     <td><?php echo $student['student_email'] ?></td>
                     <td><a href="?student=<?=$student["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
-                    <td><button type="submit" name="editStudentRow" class="btn btn-primary">Edit</button></td>
+                    <td><button type="submit" value="<?php echo $student["student_id"] ?>" name="AllStudents" class="btn btn-primary">Edit</button></td>
                     <td> <button type="submit" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
                 </tr>
-
-
             <?php endforeach; ?>
             </tbody>
         </table>

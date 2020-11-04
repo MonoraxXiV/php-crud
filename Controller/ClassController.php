@@ -25,31 +25,31 @@ class ClassController
         if (isset($_GET["class"])) {
             $classId = $_GET["class"];
             $studentList = $connection->getStudentsFromClass($classId);
+
             $view = "View/ClassProfileView.php";
-        }
-        if (isset($_POST["editClassProfile"])) {
-            require_once "View/UpdateClassView.php";
-        }
-        if (isset($_POST["confirmUpdate"])) {
-            $ClassName = $_POST["ClassName"];
-            $ClassLocation = $_POST["ClassLocation"];
-            if ((!empty($ClassName) && (!empty($ClassLocation)))) {
-                $updateClass = $connection->updateClass($ClassName, $ClassLocation, intval($classId));
-                header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=$classId");
+
+            if (isset($_POST["editClassProfile"])) {
+                require_once "View/UpdateClassView.php";
+            }
+            if (isset($_POST["confirmClassUpdate"])) {
+                $ClassName = $_POST["ClassName"];
+                $ClassLocation = $_POST["ClassName"];
+                if ((!empty($ClassName) && (!empty($ClassLocation)))) {
+                    $updateClass = $connection->updateClass($ClassName, $ClassLocation, intval($classId));
+                    header('Location: ' . $_SERVER['PHP_SELF'] . "?class=$classId");
+                }
             }
         }
-
         if (isset($_GET['AllClasses'])) {
             if (($_GET['AllClasses'] !== "")) {
                 $overviewClassId = $_GET['AllClasses'];
-                var_dump($overviewClassId);
                 require_once "View/UpdateClassView.php";
             }
-            if (isset($_POST["confirmUpdate"])) {
+            if (isset($_POST["confirmClassUpdate"])) {
                 $ClassNameOverview = $_POST["ClassName"];
-                $ClassLocationOverview = $_POST["ClassLocation"];
+                $ClassLocationOverview = $_POST["ClassName"];
                 if ((!empty($ClassNameOverview) && (!empty($ClassLocationOverview)))) {
-                    $updateClass = $connection->updateClass($ClassNameOverview, $ClassLocationOverview, intval($overviewClassId));
+                    $updateStudent = $connection->updateClass($ClassLocationOverview, $ClassLocationOverview, intval($overviewClassId));
                     header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=");
                 }
             }
