@@ -3,11 +3,11 @@
     <div class='form-row'>
         <div class='form-group col-md-6'>
             <label for='ClassName'>Student Name:</label>
-            <input type='text' name='StudentName' id='StudentName' class='form-control' value=''>
+            <input type='text' name='StudentName' id='StudentName' class='form-control' value='<?php echo $profileStudent['student_name'] ?>'>
         </div>
         <div class='form-group col-md-6'>
             <label for='ClassLocation'>Student Email:</label>
-            <input type='text' name='StudentEmail' id='StudentEmail' class='form-control' value=''>
+            <input type='text' name='StudentEmail' id='StudentEmail' class='form-control' value='<?php echo $profileStudent['student_email'] ?>'>
         </div>
         <div class='form-group col-md-6'>
             <div class='CN'>

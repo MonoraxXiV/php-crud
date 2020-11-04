@@ -68,6 +68,7 @@ class StudentController
         if (isset($_GET['AllStudents'])) {
             if (($_GET['AllStudents'] !== "")) {
                 $studentId = $_GET['AllStudents'];
+                $profileStudent = $connection->profileStudent($studentId);
                 $viewform =  "View/UpdateStudentView.php";
             }
             if (isset($_POST["confirmStudentUpdate"])) {
