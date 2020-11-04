@@ -6,11 +6,13 @@ class ClassController
     public function render()
     {
         $view = "View/ClassView.php";
+        $viewform = "View/emptyView.php";
         $connection = new Connection();
         $classes = $connection->displayClass();
+        $classID = "";
 
         if (isset($_POST['addNewClass'])) {
-            require_once "View/RegistrationClassView.php";
+            $viewform = "View/RegistrationClassView.php";
         }
 
         if (isset($_POST['confirm'])) {
@@ -30,7 +32,7 @@ class ClassController
             $view = "View/ClassProfileView.php";
 
             if (isset($_POST["editClassProfile"])) {
-                require_once "View/UpdateClassView.php";
+                $viewform = "View/UpdateClassView.php";
             }
             if (isset($_POST["deleteClassProfile"])) {
                 $deleteStudent = $connection->deleteClass($classId);
@@ -44,26 +46,28 @@ class ClassController
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?class=$classId");
                 }
             }
+//            $classID = $classId;
         }
         if (isset($_GET['AllClasses'])) {
             if (($_GET['AllClasses'] !== "")) {
-                $overviewClassId = $_GET['AllClasses'];
-                require_once "View/UpdateClassView.php";
+                $classId = $_GET['AllClasses'];
+                $viewform = "View/UpdateClassView.php";
             }
             if (isset($_POST["confirmClassUpdate"])) {
                 $ClassNameOverview = $_POST["ClassName"];
-                $ClassLocationOverview = $_POST["ClassName"];
+                $ClassLocationOverview = $_POST["ClassLocation"];
                 if ((!empty($ClassNameOverview) && (!empty($ClassLocationOverview)))) {
-                    $updateClass = $connection->updateClass($ClassLocationOverview, $ClassLocationOverview, intval($overviewClassId));
+                    $updateClass = $connection->updateClass($ClassNameOverview, $ClassLocationOverview, intval($classId));
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
                 }
             }
         }
         if (isset($_POST['delete'])) {
-            $overviewClassId = $_POST['delete'];
-            $deleteClass = $connection->deleteClass($overviewClassId);
+            $classId = $_POST['delete'];
+            $deleteClass = $connection->deleteClass($classId);
             header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
         }
         require $view;
+        require $viewform;
     }
 }

@@ -1,4 +1,5 @@
 <form style="text-align: center; width: 50%; margin: auto; bottom: 0;" method='post'>
+    <h4>Add New Student</h4>
     <div class='form-row'>
         <div class='form-group col-md-6'>
             <label for='ClassName'>Student Name:</label>

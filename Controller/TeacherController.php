@@ -6,6 +6,7 @@ class TeacherController
     public function render()
     {
         $view = 'View/TeacherView.php';
+        $viewform = "View/emptyView.php";
         $connection = new Connection();
         $showTeachers = $connection->displayTeacher();
         $classes = $connection->displayClass();
@@ -14,7 +15,7 @@ class TeacherController
             array_push($arrayClass, $teacher['teacher_class']);
         }
         if (isset($_POST['addNewTeacher'])) {
-            require "View/RegistrationTeacherView.php";
+            $viewform = "View/RegistrationTeacherView.php";
         }
 
         if (isset($_POST['confirmTeacher'])) {
@@ -45,7 +46,7 @@ class TeacherController
             $view = "View/TeacherProfileView.php";
 
             if (isset($_POST["editTeacherProfile"])) {
-                require "View/UpdateTeacherView.php";
+                $viewform = "View/UpdateTeacherView.php";
             }
             if (isset($_POST["confirmTeacherUpdate"])) {
                 $teacherName = $_POST["TeacherName"];
@@ -64,24 +65,25 @@ class TeacherController
         }
         if (isset($_GET['AllTeachers'])) {
             if (($_GET['AllTeachers'] !== "")) {
-                $overviewTeacherId = $_GET['AllTeachers'];
-                require_once "View/UpdateTeacherView.php";
+                $teacherId = $_GET['AllTeachers'];
+                $viewform = "View/UpdateTeacherView.php";
             }
             if (isset($_POST["confirmTeacherUpdate"])) {
                 $teacherNameOverview = $_POST["TeacherName"];
                 $teacherEmailOverview = $_POST["TeacherEmail"];
                 $teacherClassOverview = $_POST["TeacherClass"];
                 if ((!empty($teacherNameOverview) && (!empty($teacherEmailOverview)))) {
-                    $updateStudent = $connection->updateTeacher($teacherNameOverview, $teacherEmailOverview, $teacherClassOverview, intval($overviewTeacherId));
+                    $updateStudent = $connection->updateTeacher($teacherNameOverview, $teacherEmailOverview, $teacherClassOverview, intval($teacherId));
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
                 }
             }
         }
         if (isset($_POST["deleteTeacherRow"])) {
-            $overviewTeacherId = $_POST["deleteTeacherRow"];
-            $deleteTeacher = $connection->deleteTeacher(intval($overviewTeacherId));
+            $teacherId = $_POST["deleteTeacherRow"];
+            $deleteTeacher = $connection->deleteTeacher(intval($teacherId));
             header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
         }
         require $view;
+        require $viewform;
     }
 }
