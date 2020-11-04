@@ -102,11 +102,12 @@ class Connection
         return $profileClass;
     }
 
-    public function updateStudent(string $sName, string $sEmail, int $studentId)
+    public function updateStudent(string $sName, string $sEmail,$sClass, int $studentId)
     {
-        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :student_name, student_email = :student_email WHERE student_id = :student_id');
+        $handle = $this->openConnection()->prepare('UPDATE student SET student_name = :student_name, student_email = :student_email, student_class = :student_class WHERE student_id = :student_id');
         $handle->bindParam(':student_name', $sName);
         $handle->bindParam(':student_email', $sEmail);
+        $handle->bindParam(':student_class', $sClass);
         $handle->bindParam(':student_id', $studentId);
         $handle->execute();
     }
