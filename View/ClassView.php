@@ -9,8 +9,8 @@
           rel="stylesheet"/>
     <title>List of classes</title>
 </head>
-<body>
-<div class="container">
+<body style="background-color: plum">
+<div class=" container bg-light mt-1 p-2 rounded-top shadow-lg ">
     <h1>All Classes</h1>
     <form method="get">
         <table id ='customers'>
@@ -33,8 +33,8 @@
         </table>
     </form>
     <form method="post">
-        <button type="submit" name="addNewClass" class="btn btn-primary">Add Class</button>
-        <button type="submit" name="backToMain" class="btn btn-primary">Go Back To Main Page</button>
+        <button type="submit" name="addNewClass" class="btn btn-primary mt-1">Add Class</button>
+        <button type="submit" name="backToMain" class="btn btn-primary mt-1">Go Back To Main Page</button>
     </form>
 </div>
 <style>

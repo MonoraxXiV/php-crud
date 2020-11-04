@@ -12,8 +12,8 @@
     <title>Teacher List</title>
 </head>
 <body>
-<div class="container">
-<form method="get">
+<body style="background-color: plum">
+<div class=" container bg-light mt-1 p-2 rounded-top shadow-lg ">
     <table id ='customers'>
         <tbody>
         <td>ID</td>

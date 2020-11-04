@@ -9,8 +9,8 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Users</title>
 </head>
-<body>
-<div class="container">
+<body style="background-color: plum">
+<div class=" container bg-light mt-1 p-2 rounded-top shadow-lg ">
     <h1> <?php echo "List of students" ?></h1>
     <form method="get">
         <table id ='customers'>

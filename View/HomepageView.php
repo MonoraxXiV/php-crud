@@ -8,7 +8,7 @@
           rel="stylesheet"/>
     <title>Home page</title>
 </head>
-<body>
+<body style="background-color: plum">
 <h1>Home Page</h1>
 <form method='get'>
         <button type='submit' name='AllClasses' class='btn btn-primary'>Class</button>
