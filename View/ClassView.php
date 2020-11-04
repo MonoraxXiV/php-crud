@@ -31,12 +31,12 @@
             <?php endforeach ?>
             </tbody>
         </table>
+    </form>
+    <form method="post">
         <button type="submit" name="addNewClass" class="btn btn-primary">Add Class</button>
         <button type="submit" name="backToMain" class="btn btn-primary">Go Back To Main Page</button>
     </form>
-    <?php echo $form; ?>
 </div>
-<?php echo $formEdit ?>
 <style>
     .container {
         width: 50%;

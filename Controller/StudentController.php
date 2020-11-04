@@ -10,10 +10,8 @@ class StudentController
         $connection = new Connection();
         $showStudents = $connection->displayStudent();
         $classes = $connection->displayClass();
-        $form = "";
         if (isset($_POST['addNewStudent'])) {
             require "View/RegistrationStudentView.php";
-
         }
         if (isset($_POST['confirm'])) {
             $StudentName = $_POST["StudentName"];
@@ -45,25 +43,15 @@ class StudentController
             $view = "View/StudentProfileView.php";
 
             if (isset($_POST["editStudentProfile"])) {
-                $form = "<form method='post'>
-<div class='form-row'>
-                <div class='form-group col-md-6'>
-                    <label for='StudentName'>Student Name:</label>
-                    <input type='text' name='StudentName' id='StudentName' class='form-control' value=''>
-</div>
-            <div class='form - group col - md - 6'>
-    <label for='StudentEmail'>Student Email:</label>
-    <input type='text' name='StudentEmail' id='StudentEmail' class='form-control' value=''>
-</div>
-</div>
-<button type='submit' name='confirmEdit' class='btn btn-primary'>Confirm</button>
-</form>";
+                require "View/UpdateStudentView.php";
             }
-            if (isset($_POST["confirmEdit"])) {
+            if (isset($_POST["confirmStudentUpdate"])) {
                 $studentName = $_POST["StudentName"];
                 $studentEmail = $_POST["StudentEmail"];
-                $updateStudent = $connection->updateStudent($studentName, $studentEmail, intval($studentId));
-                header("Location: http://crud.localhost/?student=$studentId");
+                if ((!empty($studentName) && (!empty($studentEmail)))) {
+                    $updateStudent = $connection->updateStudent($studentName, $studentEmail, intval($studentId));
+                    header("Location: http://crud.localhost/?student=$studentId");
+                }
             }
         }
 

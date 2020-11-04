@@ -5,7 +5,6 @@ class TeacherController
 {
     public function render()
     {
-        $form = "";
         $view = 'View/TeacherView.php';
         $connection = new Connection();
         $showTeachers = $connection->displayTeacher();
@@ -27,7 +26,7 @@ class TeacherController
                 } else {
                     $teacher = new Teacher($TeacherName, $TeacherEmail, intval($classTeacherID));
                     $connection->insertTeacher($teacher);
-                    header("Location: http://crud.localhost/?teacher");
+                    header("Location: http://crud.localhost/?AllTeachers");
                 }
             }
         }
@@ -45,27 +44,16 @@ class TeacherController
             }
         }
         if (isset($_POST["editTeacherProfile"])) {
-            $form = "<form method='post'>
-<div class='form-row'>
-                <div class='form-group col-md-6'>
-                    <label for='TeacherName'>Teacher Name:</label>
-                    <input type='text' name='TeacherName' id='TeacherName' class='form-control' value=''>
-</div>
-            <div class='form - group col - md - 6'>
-    <label for='StudentEmail'>Teacher Email:</label>
-    <input type='text' name='TeacherEmail' id='TeacherEmail' class='form-control' value=''>
-</div>
-</div>
-<button type='submit' name='confirmEdit' class='btn btn-primary'>Confirm</button>
-</form>";
+            require "View/UpdateTeacherView.php";
         }
-        if (isset($_POST["confirmEdit"])) {
+        if (isset($_POST["confirmUpdate"])) {
             $teacherName = $_POST["TeacherName"];
             $teacherEmail = $_POST["TeacherEmail"];
-            $updateTeacher = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
-            header("Location: http://crud.localhost/?teacher=$teacherId");
+            if ((!empty($teacherName) && (!empty($teacherEmail)))) {
+                $updateTeacher = $connection->updateTeacher($teacherName, $teacherEmail, intval($teacherId));
+                header("Location: http://crud.localhost/?teacher=$teacherId");
+            }
         }
-
 
         require $view;
     }

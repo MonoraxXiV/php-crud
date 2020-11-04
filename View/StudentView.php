@@ -38,7 +38,6 @@
         <button type="submit" name="addNewStudent" class="btn btn-primary">Add Student</button>
         <button type="submit" name="backToMain" class="btn btn-primary">Go Back To Main Page</button>
     </form>
-    <?php echo $form; ?>
 </div>
 
 <style>
