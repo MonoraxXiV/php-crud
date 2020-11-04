@@ -52,9 +52,9 @@ class ClassController
             }
             if (isset($_POST["confirmClassUpdate"])) {
                 $ClassNameOverview = $_POST["ClassName"];
-                $ClassLocationOverview = $_POST["ClassName"];
+                $ClassLocationOverview = $_POST["ClassLocation"];
                 if ((!empty($ClassNameOverview) && (!empty($ClassLocationOverview)))) {
-                    $updateClass = $connection->updateClass($ClassLocationOverview, $ClassLocationOverview, intval($overviewClassId));
+                    $updateClass = $connection->updateClass($ClassNameOverview, $ClassLocationOverview, intval($overviewClassId));
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
                 }
             }
