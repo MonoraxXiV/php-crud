@@ -18,13 +18,13 @@
             <td>ID</td>
             <td>NAME</td>
             <td>LOCATION</td>
-            <td>STUDENT LIST</td>
+            <td>Class information</td>
             <?php foreach ($classes as $class): ?>
                 <tr>
                     <td><?php echo $class['class_id'] ?></td>
                     <td><?php echo $class['class_name'] ?></td>
                     <td><?php echo $class['class_location']  ?></td>
-                    <td><a href="?class=<?=$class["class_id"]?>"><button type="button" name="studentList" class="btn btn-primary"><?php echo $class['class_name']."'s students"?></button></td></a>
+                    <td><a href="?class=<?=$class["class_id"]?>"><button type="button" name="studentList" class="btn btn-primary"><?php echo $class['class_name']?></button></td></a>
                     <td><button type="submit" value="<?php echo $class['class_id'] ?>" name="AllClasses" class="btn btn-primary">Edit</button></td>
                     <td><button type="submit" formmethod="post" value="<?php echo $class['class_id'] ?>" name="delete" class="btn btn-primary">Delete</button></td>
                 </tr>
