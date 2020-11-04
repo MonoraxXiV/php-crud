@@ -4,7 +4,7 @@
 class TeacherController
 {
     public function render()
-    {
+    {   $errorMsg="";
         $view = 'View/TeacherView.php';
         $viewform = "View/emptyView.php";
         $connection = new Connection();
@@ -81,8 +81,19 @@ class TeacherController
         }
         if (isset($_POST["deleteTeacherRow"])) {
             $teacherId = $_POST["deleteTeacherRow"];
-            $deleteTeacher = $connection->deleteTeacher(intval($teacherId));
-            header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
+            $teacherError=$connection->profileTeacher($teacherId);
+
+
+            if ($teacherError['teacher_class']!==null){
+                $errorMsg= '    <div class="alert alert-danger" role="alert">
+    <strong>Teacher belongs to a class, cannot be deleted</strong>
+                                </div>';
+
+            } else {
+                $teacherId = $_POST["deleteTeacherRow"];
+                $deleteTeacher = $connection->deleteTeacher(intval($teacherId));
+                header('Location: ' . $_SERVER['PHP_SELF'] . "?AllTeachers=");
+            }
         }
         require $view;
         require $viewform;

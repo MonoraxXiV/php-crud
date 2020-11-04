@@ -15,6 +15,9 @@
 <body style="background-color: plum">
 <div class=" container bg-light mt-1 p-2 rounded-top shadow-lg ">
     <h1> <?php echo "List of teachers" ?></h1>
+
+        <?php  echo $errorMsg ?>
+
     <form method="get">
     <table id ='customers'>
         <tbody>
