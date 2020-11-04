@@ -12,6 +12,7 @@ class ClassController
         if (isset($_POST['addNewClass'])) {
             require_once "View/RegistrationClassView.php";
         }
+
         if (isset($_POST['confirm'])) {
             $className = $_POST["ClassName"];
             $classLocation = $_POST["ClassLocation"];
@@ -30,6 +31,10 @@ class ClassController
 
             if (isset($_POST["editClassProfile"])) {
                 require_once "View/UpdateClassView.php";
+            }
+            if (isset($_POST["deleteClassProfile"])) {
+                $deleteStudent = $connection->deleteClass($classId);
+                header('Location: ' . $_SERVER['PHP_SELF'] . "?AllClasses=");
             }
             if (isset($_POST["confirmClassUpdate"])) {
                 $ClassName = $_POST["ClassName"];
