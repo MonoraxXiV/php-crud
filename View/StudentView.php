@@ -18,12 +18,24 @@
             <td>ID</td>
             <td>NAME</td>
             <td>EMAIL</td>
+            <td>CLASS</td>
             <td>PROFILE</td>
             <?php foreach ($showStudents as $student): ?>
+                <?php
+                $profileStudent = $connection->profileStudent($student["student_id"]);
+                if ($profileStudent['student_class'] !== null) {
+                    $getClassName = $connection->getClassName($profileStudent['student_class']);
+                    $getClassName = $getClassName['class_name'];
+                } else $getClassName ="";
+                ?>
                 <tr>
+
                     <td><?php echo $student['student_id'] ?></td>
                     <td><?php echo $student['student_name'] ?></td>
                     <td><?php echo $student['student_email'] ?></td>
+
+                    <td><?php echo $getClassName ; ?></td>
+
                     <td><a href="?student=<?=$student["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
                     <td><button type="submit" value="<?php echo $student["student_id"] ?>" name="AllStudents" class="btn btn-primary">Edit</button></td>
                     <td><button type="submit" formmethod="post" value="<?php echo $student["student_id"] ?>" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
