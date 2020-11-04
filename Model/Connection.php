@@ -112,11 +112,12 @@ class Connection
         $handle->execute();
     }
 
-    public function updateTeacher(string $tName, string $tEmail, int $teacherId)
+    public function updateTeacher(string $tName, string $tEmail,$tClass, int $teacherId)
     {
-        $handle = $this->openConnection()->prepare('UPDATE teacher SET teacher_name = :teacher_name, teacher_email = :teacher_email WHERE teacher_id = :teacher_id');
+        $handle = $this->openConnection()->prepare('UPDATE teacher SET teacher_name = :teacher_name, teacher_email = :teacher_email, teacher_class = :teacher_class WHERE teacher_id = :teacher_id');
         $handle->bindParam(':teacher_name', $tName);
         $handle->bindParam(':teacher_email', $tEmail);
+        $handle->bindParam(':teacher_class', $tClass);
         $handle->bindParam(':teacher_id', $teacherId);
         $handle->execute();
     }
