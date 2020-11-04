@@ -26,7 +26,7 @@
                     <td><?php echo $student['student_email'] ?></td>
                     <td><a href="?student=<?=$student["student_id"]?>"><button type="button" name="studentId" class="btn btn-primary">Profile</button></td></a>
                     <td><button type="submit" value="<?php echo $student["student_id"] ?>" name="AllStudents" class="btn btn-primary">Edit</button></td>
-                    <td> <button type="submit" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
+                    <td><button type="submit" formmethod="post" value="<?php echo $student["student_id"] ?>" name="deleteStudentRow" class="btn btn-primary">Delete</button></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

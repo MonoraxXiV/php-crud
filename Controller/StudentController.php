@@ -44,6 +44,9 @@ class StudentController
             if (isset($_POST["editStudentProfile"])) {
                 require "View/UpdateStudentView.php";
             }
+            if (isset($_POST["deleteStudentProfile"])) {
+                $deleteStudent = $connection->deleteStudent($studentId);
+            }
             if (isset($_POST["confirmStudentUpdate"])) {
                 $studentName = $_POST["StudentName"];
                 $studentEmail = $_POST["StudentEmail"];
@@ -66,6 +69,11 @@ class StudentController
                     $updateStudent = $connection->updateStudent($studentNameOverview, $studentEmailOverview, intval($overviewStudentId));
                     header('Location: '.$_SERVER['PHP_SELF']."?AllStudents=");
                 }
+            }
+            if (isset($_POST['deleteStudentRow'])) {
+                $overviewStudentId = $_POST['deleteStudentRow'];
+                $deleteClass = $connection->deleteStudent($overviewStudentId);
+                header('Location: ' . $_SERVER['PHP_SELF'] . "?AllStudents=");
             }
         }
         require $view;
