@@ -46,6 +46,7 @@ class StudentController
             }
             if (isset($_POST["deleteStudentProfile"])) {
                 $deleteStudent = $connection->deleteStudent($studentId);
+                header('Location: ' . $_SERVER['PHP_SELF'] . "?AllStudents=");
             }
             if (isset($_POST["confirmStudentUpdate"])) {
                 $studentName = $_POST["StudentName"];
