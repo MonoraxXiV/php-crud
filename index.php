@@ -22,7 +22,7 @@ if (isset($_GET['AllClasses'])) {
 
 if (isset($_POST['backToMain'])) {
     $controller = new HomepageController();
-    header("Location: http://crud.localhost/");
+    header('Location: '.$_SERVER['PHP_SELF']);
 }
 
 if (isset($_GET['AllStudents'])) {
@@ -43,15 +43,15 @@ if (isset($_GET['class'])){
 }
 if (isset($_POST['backToStudents'])) {
     $controller = new StudentController();
-    header("Location: http://crud.localhost?AllStudents");
+    header('Location: '.$_SERVER['PHP_SELF']."?AllStudents=");
 }
 if (isset($_POST['backToTeachers'])) {
     $controller = new TeacherController();
-    header("Location: http://crud.localhost?AllTeachers");
+    header('Location: '.$_SERVER['PHP_SELF']."?AllTeachers=");
 }
 if (isset($_POST['backToClasses'])) {
     $controller = new TeacherController();
-    header("Location: http://crud.localhost?AllClasses");
+    header('Location: '.$_SERVER['PHP_SELF']."?AllClasses=");
 }
 
 
