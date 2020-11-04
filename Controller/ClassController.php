@@ -9,7 +9,7 @@ class ClassController
         $viewform = "View/emptyView.php";
         $connection = new Connection();
         $classes = $connection->displayClass();
-        $classID = "";
+        $classID = $className = "";
 
         if (isset($_POST['addNewClass'])) {
             $viewform = "View/RegistrationClassView.php";
@@ -27,6 +27,7 @@ class ClassController
 
         if (isset($_GET["class"])) {
             $classId = $_GET["class"];
+            $className = $connection->getClassName($classId);
             $studentList = $connection->getStudentsFromClass($classId);
 
             $view = "View/ClassProfileView.php";
@@ -49,8 +50,10 @@ class ClassController
 //            $classID = $classId;
         }
         if (isset($_GET['AllClasses'])) {
+
             if (($_GET['AllClasses'] !== "")) {
                 $classId = $_GET['AllClasses'];
+                $className = $connection->getClassName($classId);
                 $viewform = "View/UpdateClassView.php";
             }
             if (isset($_POST["confirmClassUpdate"])) {
