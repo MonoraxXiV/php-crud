@@ -29,6 +29,16 @@ class ClassController
             $classId = $_GET["class"];
             $className = $connection->getClassName($classId);
             $studentList = $connection->getStudentsFromClass($classId);
+            $getTeacherName = $connection->getTeacherName($classId);
+            if ($getTeacherName !== false) {
+                $getTeacherName = $getTeacherName['teacher_name'];
+                $getTeacherLink = $connection->getTeacherId($classId)['teacher_id'];
+            } else {
+                $getTeacherLink = '';
+                $getTeacherName = "";
+                $getTeacherLink = '';
+            }
+
 
             $view = "View/ClassProfileView.php";
 
@@ -41,7 +51,7 @@ class ClassController
             }
             if (isset($_POST["confirmClassUpdate"])) {
                 $ClassName = $_POST["ClassName"];
-                $ClassLocation = $_POST["ClassName"];
+                $ClassLocation = $_POST["ClassLocation"];
                 if ((!empty($ClassName) && (!empty($ClassLocation)))) {
                     $updateClass = $connection->updateClass($ClassName, $ClassLocation, intval($classId));
                     header('Location: ' . $_SERVER['PHP_SELF'] . "?class=$classId");

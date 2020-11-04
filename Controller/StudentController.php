@@ -34,12 +34,15 @@ class StudentController
                 $getClassName = $connection->getClassName($studentClassId);
                 $getTeacherName = $connection->getTeacherName($studentClassId);
                 $getClassName = $getClassName['class_name'];
-                $getTeacherName = $getTeacherName['teacher_name'];
-                $getTeacherLink = $connection->getTeacherId($profileStudent['student_class'])['teacher_id'];
+                if ($getTeacherName !== false) {
+                    $getTeacherName = $getTeacherName['teacher_name'];
+                    $getTeacherLink = $connection->getTeacherId($profileStudent['student_class'])['teacher_id'];
+                } else {
+                    $getTeacherLink = '';
+                    $getTeacherName = "";
+                    $getTeacherLink = '';}
             } else {
                 $getClassName = "";
-                $getTeacherName = "";
-                $getTeacherLink = '';
             }
 
             $view = "View/StudentProfileView.php";
