@@ -7,11 +7,12 @@ class StudentController
     public function render()
     {
         $view = "View/StudentView.php";
+        $viewform = "View/emptyView.php";
         $connection = new Connection();
         $showStudents = $connection->displayStudent();
         $classes = $connection->displayClass();
         if (isset($_POST['addNewStudent'])) {
-            require "View/RegistrationStudentView.php";
+            $viewform = "View/RegistrationStudentView.php";
         }
         if (isset($_POST['confirm'])) {
             $StudentName = $_POST["StudentName"];
@@ -44,7 +45,7 @@ class StudentController
             $view = "View/StudentProfileView.php";
 
             if (isset($_POST["editStudentProfile"])) {
-                require "View/UpdateStudentView.php";
+                $viewform = "View/UpdateStudentView.php";
             }
             if (isset($_POST["deleteStudentProfile"])) {
                 $deleteStudent = $connection->deleteStudent($studentId);
@@ -63,24 +64,25 @@ class StudentController
         }
         if (isset($_GET['AllStudents'])) {
             if (($_GET['AllStudents'] !== "")) {
-                $overviewStudentId = $_GET['AllStudents'];
-                require_once "View/UpdateStudentView.php";
+                $studentId = $_GET['AllStudents'];
+                $viewform =  "View/UpdateStudentView.php";
             }
             if (isset($_POST["confirmStudentUpdate"])) {
                 $studentNameOverview = $_POST["StudentName"];
                 $studentEmailOverview = $_POST["StudentEmail"];
                 $studentClassOverview = $_POST["class"];
                 if ((!empty($studentNameOverview) && (!empty($studentEmailOverview)))) {
-                    $updateStudent = $connection->updateStudent($studentNameOverview, $studentEmailOverview, $studentClassOverview, intval($overviewStudentId));
+                    $updateStudent = $connection->updateStudent($studentNameOverview, $studentEmailOverview, $studentClassOverview, intval($studentId));
                     header('Location: '.$_SERVER['PHP_SELF']."?AllStudents=");
                 }
             }
             if (isset($_POST['deleteStudentRow'])) {
-                $overviewStudentId = $_POST['deleteStudentRow'];
-                $deleteClass = $connection->deleteStudent($overviewStudentId);
+                $studentId = $_POST['deleteStudentRow'];
+                $deleteClass = $connection->deleteStudent($studentId);
                 header('Location: ' . $_SERVER['PHP_SELF'] . "?AllStudents=");
             }
         }
         require $view;
+        require $viewform;
     }
 }
