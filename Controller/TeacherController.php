@@ -66,6 +66,7 @@ class TeacherController
         if (isset($_GET['AllTeachers'])) {
             if (($_GET['AllTeachers'] !== "")) {
                 $teacherId = $_GET['AllTeachers'];
+                $profileTeacher = $connection->profileTeacher($teacherId);
                 $viewform = "View/UpdateTeacherView.php";
             }
             if (isset($_POST["confirmTeacherUpdate"])) {

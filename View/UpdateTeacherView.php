@@ -3,11 +3,11 @@
     <div class='form-row'>
         <div class='form-group col-md-6'>
             <label for='TeacherName'>Teacher Name:</label>
-            <input type='text' name='TeacherName' id='TeacherName' class='form-control' value=''>
+            <input type='text' name='TeacherName' id='TeacherName' class='form-control' value='<?php echo $connection->profileTeacher($teacherId)['teacher_name'] ?>'>
         </div>
         <div class='form-group col-md-6'>
             <label for='ClassLocation'>Teacher Email:</label>
-            <input type='text' name='TeacherEmail' id='TeacherEmail' class='form-control' value=''>
+            <input type='text' name='TeacherEmail' id='TeacherEmail' class='form-control' value='<?php echo $connection->profileTeacher($teacherId)['teacher_email'] ?>'>
         </div>
         <div class='form-group col-md-6'>
             <div class='CN'>
