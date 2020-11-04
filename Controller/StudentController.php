@@ -37,7 +37,6 @@ class StudentController
             } else {
                 $getClassName = "";
                 $getTeacherName = "";
-
             }
 
             $view = "View/StudentProfileView.php";
@@ -55,7 +54,22 @@ class StudentController
                 }
             }
         }
-
+        if (isset($_GET['AllStudents'])) {
+            if (($_GET['AllStudents'] !== "")) {
+                $overviewStudentId = $_GET['AllStudents'];
+                var_dump($overviewStudentId);
+                require_once "View/UpdateStudentView.php";
+            }
+            if (isset($_POST["confirmStudentUpdate"])) {
+                var_dump($overviewStudentId);
+                $studentNameOverview = $_POST["StudentName"];
+                $studentEmailOverview = $_POST["StudentEmail"];
+                if ((!empty($studentNameOverview) && (!empty($studentEmailOverview)))) {
+                    $updateStudent = $connection->updateStudent($studentNameOverview, $studentEmailOverview, intval($overviewStudentId));
+                    header('Location: '.$_SERVER['PHP_SELF']."?AllStudents=");
+                }
+            }
+        }
         require $view;
     }
 }
